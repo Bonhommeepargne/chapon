@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { StyleSheet, Button, Text, View, Image, Alert } from 'react-native';
-import img1 from '../../assets/starsgrey.png';
 
-class MySharedComponent extends Component {
+class Exo2 extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             icons: [
                 require('../../assets/starsgrey.png'),
+                require('../../assets/dashboard.png'),
                 require('../../assets/starsgreyyellow.png'),
-                require('../../assets/dashboard.png')
             ]
         }
     }
@@ -42,7 +41,7 @@ class MySharedComponent extends Component {
                     />
                 </View>
                 <Button
-                    title="Press me"
+                    title={"Press me"}
                     onPress={() => { this.changeIcon() }}
                 />
             </View>
@@ -78,192 +77,5 @@ const styles = StyleSheet.create({
     }
 });
 
-export default MySharedComponent;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Exo2;
 
