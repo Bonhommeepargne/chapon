@@ -9,20 +9,30 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      btnTitle: "Next exo", // Dynamique titre next exo2 ou back
+      btnTitle: "", // Dynamique titre next exo2 ou back
+      pages: ['Main', 'Exo1', 'Exo2']
     };
   }
 
   nextPage() {
-    if (Actions.currentScene == "main" ) return
-    if (Actions.currentScene == "exo1" ) Actions.exo2();
+    if (Actions.currentScene == "main") return
+    if (Actions.currentScene == "exo1") Actions.exo2();
     else Actions.reset('main');
+  }
 
+  buttonName() {
+    let pages = this.state.pages;
+    let pos = pages.indexOf(Actions.currentScene)
+    if (pos === pages.length - 1) {
+      return pages[0];
+    } else {
+      return pages[pos+1];
+    }
   }
 
   render() {
     return (
-        <View style={styles.container}>
+      <View style={styles.container}>
         <Router >
           <Scene key="root">
             <Scene key="main" component={Main} title="Main" titleStyle={styles.navigationBarTitleStyle} initial />
@@ -32,11 +42,11 @@ class Index extends Component {
         </Router>
         <Text> Affichage conditionel ( ne devrais pas apparetre dans main) Le titre devrais etre dynamique voir state</Text>
         <Button
-          title={this.state.btnTitle}
+          title={this.buttonName()}
           onPress={() => { this.nextPage() }}
         />
 
-        </View>
+      </View>
     );
   }
 }

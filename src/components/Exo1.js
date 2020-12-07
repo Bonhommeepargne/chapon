@@ -15,7 +15,6 @@ class Exo1 extends Component {
     }
 
     changeIcon() {
-        console.log("Notre state : ", this.state);
         // let iconsTab =
         this.setState((Oldstate) => {
             return { icons: [Oldstate.icons[2], Oldstate.icons[1], Oldstate.icons[0]] }
@@ -23,7 +22,6 @@ class Exo1 extends Component {
     }
 
     render() {
-        console.log("render");
         return (
             <View style={styles.container}>
                 <View style={styles.containerIcons}>

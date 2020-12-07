@@ -12,7 +12,8 @@ class Exo2 extends Component {
                 require('../../../assets/starsgrey.png'),
                 require('../../../assets/dashboard.png'),
                 require('../../../assets/starsgreyyellow.png'),
-            ]
+            ],
+            compteur: 1
         }
     }
 
