@@ -9,15 +9,15 @@ class Exo2 extends Component {
         super(props);
         this.state = {
             icons: [
-                require('../../assets/starsgrey.png'),
-                require('../../assets/dashboard.png'),
-                require('../../assets/starsgreyyellow.png'),
+                require('../../../assets/starsgrey.png'),
+                require('../../../assets/dashboard.png'),
+                require('../../../assets/starsgreyyellow.png'),
             ]
         }
     }
 
-    changeIcon() {
-        console.log("Notre state : ", this.state);
+    changeIcon = () => {
+        // console.log("Notre state : ", this.state);
         // let iconsTab =
         this.setState((Oldstate) => {
             return { icons: [Oldstate.icons[2], Oldstate.icons[1], Oldstate.icons[0]] }

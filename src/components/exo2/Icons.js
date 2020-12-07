@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 class Icons extends Component {
     constructor(props) {
         super(props);
         this.state = {}
     }
+    
     render() {
         return (
             <View style={styles.containerIcons}>

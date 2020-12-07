@@ -6,11 +6,12 @@ class ButtonMsx extends Component {
         super(props);
         this.state = {  }
     }
+    
     render() { 
         return ( 
             <Button
             title={"Press me"}
-            onPress={this.props.changeIcon}
+            onPress={this.props.handler}
             />
          );
     }

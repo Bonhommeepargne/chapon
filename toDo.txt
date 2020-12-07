@@ -1,0 +1,3 @@
+-- Mission 1 : Affichage dynamique du texte du boutton
+-- Mission 2 : Affichage contextuel du bouton de passage à un autre exo, rien sur main
+-- Mission 3 : Affichage en boucle de tous les exercices dans main
