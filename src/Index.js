@@ -3,7 +3,7 @@ import { StyleSheet, Button, Text, View, Image, Alert } from "react-native";
 import { Router, Scene, Stack, Actions } from "react-native-router-flux";
 import Main from "./components/Main";
 import Exo1 from "./components/Exo1";
-import Exo2 from "./components/Exo2";
+import Exo2 from "./components/exo2/Exo2";
 
 class Index extends Component {
   constructor(props) {
