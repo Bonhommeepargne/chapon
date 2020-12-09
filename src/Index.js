@@ -9,24 +9,24 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      btnTitle: "", // Dynamique titre next exo2 ou back
-      pages: ['Main', 'Exo1', 'Exo2']
+      btnTitle: ''
     };
   }
 
-  nextPage() {
-    if (Actions.currentScene == "main") return
-    if (Actions.currentScene == "exo1") Actions.exo2();
-    else Actions.reset('main');
-  }
-
-  buttonName() {
-    let pages = this.state.pages;
-    let pos = pages.indexOf(Actions.currentScene)
-    if (pos === pages.length - 1) {
-      return pages[0];
-    } else {
-      return pages[pos+1];
+  nextPage = () => {
+    switch ( Actions.currentScene ) {
+      case 'exo1':
+        console.log("Exo1");
+        this.setState((OldState) => {
+          return { btnTitle : 'Exo2' };
+        });
+        return Actions.exo2();
+      case 'exo2':
+        console.log("Exo2");
+        this.setState((OldState) => {
+          return { btnTitle : 'Return to Main' };
+        });
+        return Actions.reset('main');
     }
   }
 
@@ -40,11 +40,15 @@ class Index extends Component {
             <Scene key="exo2" component={Exo2} title="Exo2" />
           </Scene>
         </Router>
-        <Text> Affichage conditionel ( ne devrais pas apparetre dans main) Le titre devrais etre dynamique voir state</Text>
-        <Button
-          title={this.buttonName()}
-          onPress={() => { this.nextPage() }}
-        />
+        {this.state.btnTitle !== '' && this.state.btnTitle &&
+        <>
+          <Text> {this.state.btnTitle === '' ? 'Le titre du bouton est vide'  : 'Le titre du bouton est ' + this.state.btnTitle}  </Text>
+          <Button
+            title={ this.state.btnTitle }
+            onPress={() => {this.nextPage()} }
+          />
+        </>
+      }
 
       </View>
     );
