@@ -26,7 +26,7 @@ class Exo2 extends Component {
     }
 
     render() {
-        console.log("render");
+        // console.log("render");
         return (
             <View style={styles.container}>
                 <Icons icons={ this.state.icons } />

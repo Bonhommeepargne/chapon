@@ -4,27 +4,47 @@ import { Router, Scene, Actions } from "react-native-router-flux";
 import Main from "./components/Main";
 import Exo1 from "./components/Exo1";
 import Exo2 from "./components/exo2/Exo2";
+import Exo3 from "./components/exo3/Exo3";
+import Context from "./Context";
 
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      btnTitle: ''
+      btnTitle: 'toto',
+      compteur: {
+        value: 0,
+        change: this.changeCompteur
+      }
     };
   }
 
+  changeCompteur = (newValue) => {
+    this.setState((oldState) => {
+      const NewCompteur = oldState.compteur;
+      NewCompteur.value = newValue;
+      return { ...oldState, compteur: NewCompteur };
+    });
+  }
+
   nextPage = () => {
-    switch ( Actions.currentScene ) {
+    switch (Actions.currentScene) {
       case 'exo1':
         console.log("Exo1");
         this.setState((OldState) => {
-          return { btnTitle : 'Exo2' };
+          return { btnTitle: 'Exo2' };
         });
         return Actions.exo2();
       case 'exo2':
         console.log("Exo2");
         this.setState((OldState) => {
-          return { btnTitle : 'Return to Main' };
+          return { btnTitle: 'Exo3' };
+        });
+        return Actions.exo3();
+      case 'exo2':
+        console.log("Exo3");
+        this.setState((OldState) => {
+          return { btnTitle: 'Return to Main' };
         });
         return Actions.reset('main');
     }
@@ -33,23 +53,25 @@ class Index extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Router >
-          <Scene key="root">
-            <Scene key="main" component={Main} title="Main" titleStyle={styles.navigationBarTitleStyle} initial />
-            <Scene key="exo1" component={Exo1} title="Exo1" />
-            <Scene key="exo2" component={Exo2} title="Exo2" />
-          </Scene>
-        </Router>
-        {this.state.btnTitle !== '' && this.state.btnTitle &&
-        <>
-          <Text> {this.state.btnTitle === '' ? 'Le titre du bouton est vide'  : 'Le titre du bouton est ' + this.state.btnTitle}  </Text>
-          <Button
-            title={ this.state.btnTitle }
-            onPress={() => {this.nextPage()} }
-          />
-        </>
-      }
-
+        <Context.Provider value={this.state}>
+          <Router >
+            <Scene key="root">
+              <Scene key="main" component={Main} title="Main" titleStyle={styles.navigationBarTitleStyle} initial />
+              <Scene key="exo1" component={Exo1} title="Exo1" />
+              <Scene key="exo2" component={Exo2} title="Exo2" />
+              <Scene key="exo3" component={Exo3} title="Exo3" />
+            </Scene>
+          </Router>
+          {this.state.btnTitle !== '' && this.state.btnTitle &&
+            <>
+              <Text> {this.state.btnTitle === '' ? 'Le titre du bouton est vide' : 'Le titre du bouton est ' + this.state.btnTitle}  </Text>
+              <Button
+                title={this.state.btnTitle}
+                onPress={() => { this.nextPage() }}
+              />
+            </>
+          }
+        </Context.Provider>
       </View>
     );
   }

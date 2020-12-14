@@ -2,32 +2,16 @@ import React, { Component } from 'react';
 import { StyleSheet, Button, Text, View, Image, Alert } from 'react-native';
 import { Router, Scene, Stack, Actions } from "react-native-router-flux";
 
-const tab = [{ titre: "Exo1", action: Actions.exo1() }, { titre: "Exo2", action: Actions.exo2() }];
-
-// const OurButtons =
-//     tab.map((elem) => {
-//         <Button
-//             title={elem.titre}
-//             onPress={() => { elem.action() }}
-//         />
-//     })
-
-const OurButtons = () => {
-    const tab = [{ titre: "Exo1", action: Actions.exo1() }, { titre: "Exo2", action: Actions.exo2() }];
-    return (
-        <>
-            <Text> COUCOU</Text>
-            {
-                tab.map((elem) => {
-                    <Button
-                        title={elem.titre}
-                        onPress={() => { elem.action() }}
-                    />
-                })
-            }
-        </>
-    )
-}
+let tableau = [{ titre: "Exo1", action: () => {Actions.exo1()} }, { titre: "Exo2", action: () => {Actions.exo2()} }, { titre: "Exo3", action: () => {Actions.exo3()} }];
+const OurButtons = () => (
+    tableau.map((elem,i) => (
+        <Button
+            key={i}
+            title={elem.titre}
+            onPress={ () => {elem.action()} }
+         />
+    ))
+)
 
 class Main extends Component {
 
@@ -37,13 +21,11 @@ class Main extends Component {
         }
     }
 
-
-
     render() {
         return (
             <View style={styles.container}>
-                <Text> Affichage En boucle</Text>
-                {OurButtons }
+                <Text> Affichage En boucle </Text>
+                <OurButtons />
             </View>
         );
     }
