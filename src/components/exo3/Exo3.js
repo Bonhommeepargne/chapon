@@ -17,9 +17,9 @@ class Exo3 extends Component {
                 <Text>Le chiffre est:{this.context.compteur.value}</Text>
                 <Button
                     title="Increment"
-                    onPress={async () => { 
-                        await this.context.compteur.change(this.context.compteur.value + 1); // Bug ramene au main
-                        Actions.exo3();
+                    onPress={ () => { 
+                        this.context.compteur.change(this.context.compteur.value + 1); // Bug ramene au main
+                        // Actions.exo3();
                     }}
                 />
                 <Button

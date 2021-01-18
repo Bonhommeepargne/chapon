@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { StyleSheet, Button, Text, View, Image, Alert } from "react-native";
-import { Router, Scene, Actions } from "react-native-router-flux";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+const Stack = createStackNavigator();
+
 import Main from "./components/Main";
 import Exo1 from "./components/Exo1";
 import Exo2 from "./components/exo2/Exo2";
 import Exo3 from "./components/exo3/Exo3";
 import Context from "./Context";
+
 
 class Index extends Component {
   constructor(props) {
@@ -54,14 +58,14 @@ class Index extends Component {
     return (
       <View style={styles.container}>
         <Context.Provider value={this.state}>
-          <Router >
-            <Scene key="root">
-              <Scene key="main" component={Main} title="Main" titleStyle={styles.navigationBarTitleStyle} initial />
-              <Scene key="exo1" component={Exo1} title="Exo1" />
-              <Scene key="exo2" component={Exo2} title="Exo2" />
-              <Scene key="exo3" component={Exo3} title="Exo3" />
-            </Scene>
-          </Router>
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen name="Main" component={Main} />
+              <Stack.Screen name="Exo1" component={Exo1} />
+              <Stack.Screen name="Exo2" component={Exo2} />
+              <Stack.Screen name="Exo3" component={Exo3} />
+            </Stack.Navigator>
+          </NavigationContainer>
           {this.state.btnTitle !== '' && this.state.btnTitle &&
             <>
               <Text> {this.state.btnTitle === '' ? 'Le titre du bouton est vide' : 'Le titre du bouton est ' + this.state.btnTitle}  </Text>
@@ -79,6 +83,8 @@ class Index extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    justifyContent: 'center',
     width: "100%",
     height: "100%",
   },
