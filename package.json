@@ -8,15 +8,20 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "~39.0.2",
-    "expo-status-bar": "~1.0.2",
+    "-": "0.0.1",
+    "expo": "^40.0.0",
+    "expo-cli": "^4.0.13",
+    "expo-constants": "~9.3.3",
+    "expo-status-bar": "~1.0.3",
+    "g": "^2.0.1",
+    "patch-package": "^6.2.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
-    "react-native-gesture-handler": "^1.9.0",
-    "react-native-reanimated": "^1.13.2",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.0.tar.gz",
+    "react-native-gesture-handler": "~1.8.0",
+    "react-native-reanimated": "~1.13.0",
     "react-native-router-flux": "^4.2.0",
-    "react-native-screens": "^2.15.0",
+    "react-native-screens": "~2.15.0",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {

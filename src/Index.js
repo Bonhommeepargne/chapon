@@ -5,13 +5,14 @@ import Main from "./components/Main";
 import Exo1 from "./components/Exo1";
 import Exo2 from "./components/exo2/Exo2";
 import Exo3 from "./components/exo3/Exo3";
+import Exo4 from "./components/exo4/Exo4";
 import Context from "./Context";
 
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      btnTitle: 'toto',
+      btnTitle: 'toto2',
       compteur: {
         value: 0,
         change: this.changeCompteur
@@ -41,8 +42,14 @@ class Index extends Component {
           return { btnTitle: 'Exo3' };
         });
         return Actions.exo3();
-      case 'exo2':
-        console.log("Exo3");
+      case 'exo3':
+          console.log("Exo3");
+          this.setState((OldState) => {
+            return { btnTitle: 'Exo4' };
+          });
+          return Actions.exo3();
+      case 'exo4':
+        console.log("Exo4");
         this.setState((OldState) => {
           return { btnTitle: 'Return to Main' };
         });
@@ -60,6 +67,7 @@ class Index extends Component {
               <Scene key="exo1" component={Exo1} title="Exo1" />
               <Scene key="exo2" component={Exo2} title="Exo2" />
               <Scene key="exo3" component={Exo3} title="Exo3" />
+              <Scene key="exo4" component={Exo4} title="Exo4" />
             </Scene>
           </Router>
           {this.state.btnTitle !== '' && this.state.btnTitle &&

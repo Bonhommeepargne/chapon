@@ -39,7 +39,7 @@ class Exo1 extends Component {
                     />
                 </View>
                 <Button
-                    title="Press me"
+                    title="Pressme"
                     onPress={() => { this.changeIcon() }}
                 />
             </View>
